@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
 using Comun.Cache;
+using System.Data;
+using Comun;
 
 namespace Datos
 {
@@ -41,6 +43,32 @@ namespace Datos
 
                 }
             }
+        }
+
+        public string InsertarUsuario(Usuario obj)
+        {
+            
+            var connection = GetConnection();
+            string respuesta = "";
+            try
+            {
+                connection.Open();
+
+                SqlCommand comando = new SqlCommand("insertarUsuario", connection);
+                comando.CommandType = CommandType.StoredProcedure;
+                comando.Parameters.Add("@nombre", SqlDbType.VarChar).Value = obj.Nombre;
+                comando.Parameters.Add("@cuil", SqlDbType.Int).Value = obj.Cuil;
+                comando.Parameters.Add("@contraseña", SqlDbType.VarChar).Value = obj.Contraseña;
+                comando.Parameters.Add("@idRol", SqlDbType.VarChar).Value = obj.IdUsuario;
+
+
+                
+            }
+            catch (Exception ex)
+            {
+                respuesta = ex.Message;
+            }
+            return respuesta;
         }
     }
 }

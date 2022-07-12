@@ -10,6 +10,8 @@ namespace Datos
     public abstract class ConnectionToSql
     {
         private readonly string connectionString;//para la cadena de conexion
+        SqlCommand command =new SqlCommand();
+
         public ConnectionToSql()
         {
             connectionString = "Server=DESKTOP-F1AHD1I\\ESCDIRECTASQL;DataBase=POBRETITO;integrated security = True"; //cadena de conexion
@@ -20,8 +22,9 @@ namespace Datos
         {
             return new SqlConnection(connectionString);
         }
+        
 
-    
+
     }
 }
     

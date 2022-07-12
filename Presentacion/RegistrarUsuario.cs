@@ -10,6 +10,8 @@ using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using Dominio;
 using Comun.Cache;
+using Comun;
+
 
 namespace Presentacion
 {
@@ -71,7 +73,9 @@ namespace Presentacion
 
         private void btnGuardar_Enter(object sender, EventArgs e)
         {
-            
+            UsuarioDominio dominioUsuario = new UsuarioDominio();
+            dominioUsuario.InsertarUsuario(txtNombre.Text.Trim(), txtCuil.Text.Trim(), txtContraseña.Text.Trim());
+
             if (txtNombre.Text != "")
             {
                 if (txtCuil.Text != "")
@@ -79,8 +83,14 @@ namespace Presentacion
                     if (txtContraseña.Text != "")
                     {
                         //entonces guardo - instancio un nuevo Usuario
-                        
 
+                        /*UsuarioDominio dominioUsuario = new UsuarioDominio();
+                        dominioUsuario.InsertarUsuario(txtNombre.Text.Trim(), txtCuil.Text.Trim(), txtContraseña.Text.Trim());
+                        */
+
+
+
+                        
                     }
                     else
                     {
@@ -104,6 +114,10 @@ namespace Presentacion
                 txtCuil.Clear();
                 txtNombre.Clear();
             }
+
+
         }
+
+        
     }
 }
