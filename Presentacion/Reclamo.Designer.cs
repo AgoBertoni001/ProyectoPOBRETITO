@@ -35,27 +35,37 @@
             this.lblCategoría = new System.Windows.Forms.Label();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.btnVolver = new System.Windows.Forms.Button();
-            this.pOBRETITODataSet = new Presentacion.POBRETITODataSet();
-            this.incidenteBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.incidenteTableAdapter = new Presentacion.POBRETITODataSetTableAdapters.IncidenteTableAdapter();
-            this.pOBRETITODataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.categoriaBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.categoriaTableAdapter = new Presentacion.POBRETITODataSetTableAdapters.CategoriaTableAdapter();
-            this.comboBoxIncidente = new System.Windows.Forms.ComboBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.btnMinimizar = new System.Windows.Forms.PictureBox();
             this.btnCerrar = new System.Windows.Forms.PictureBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pOBRETITODataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.incidenteBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pOBRETITODataSetBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.categoriaBindingSource)).BeginInit();
+            this.lblFechaHora = new System.Windows.Forms.Label();
+            this.fechaHora = new System.Windows.Forms.Timer(this.components);
+            this.lblCalle = new System.Windows.Forms.Label();
+            this.lblAltura = new System.Windows.Forms.Label();
+            this.txtAltura = new System.Windows.Forms.TextBox();
+            this.cmbCategoria = new System.Windows.Forms.ComboBox();
+            this.cmbIncidente = new System.Windows.Forms.ComboBox();
+            this.cmbCalle = new System.Windows.Forms.ComboBox();
+            this.pOBRETITODataSet = new Presentacion.POBRETITODataSet();
+            this.categoriaBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.categoriaTableAdapter = new Presentacion.POBRETITODataSetTableAdapters.CategoriaTableAdapter();
+            this.pOBRETITODataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.incidenteBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.incidenteTableAdapter = new Presentacion.POBRETITODataSetTableAdapters.IncidenteTableAdapter();
+            this.callesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.callesTableAdapter = new Presentacion.POBRETITODataSetTableAdapters.CallesTableAdapter();
+            this.fKIncidenteCategoriaBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pOBRETITODataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.categoriaBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pOBRETITODataSetBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.incidenteBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.callesBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fKIncidenteCategoriaBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // lblIniciarReclamo
@@ -74,7 +84,7 @@
             this.lblIncidente.AutoSize = true;
             this.lblIncidente.Font = new System.Drawing.Font("Bahnschrift Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblIncidente.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblIncidente.Location = new System.Drawing.Point(165, 177);
+            this.lblIncidente.Location = new System.Drawing.Point(173, 148);
             this.lblIncidente.Name = "lblIncidente";
             this.lblIncidente.Size = new System.Drawing.Size(65, 16);
             this.lblIncidente.TabIndex = 14;
@@ -85,7 +95,7 @@
             this.lblCategoría.AutoSize = true;
             this.lblCategoría.Font = new System.Drawing.Font("Bahnschrift Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCategoría.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblCategoría.Location = new System.Drawing.Point(165, 137);
+            this.lblCategoría.Location = new System.Drawing.Point(173, 108);
             this.lblCategoría.Name = "lblCategoría";
             this.lblCategoría.Size = new System.Drawing.Size(69, 16);
             this.lblCategoría.TabIndex = 15;
@@ -104,6 +114,7 @@
             this.btnGuardar.TabIndex = 16;
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.UseVisualStyleBackColor = false;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // btnVolver
             // 
@@ -119,60 +130,6 @@
             this.btnVolver.Text = "Volver";
             this.btnVolver.UseVisualStyleBackColor = false;
             this.btnVolver.Click += new System.EventHandler(this.btnVolver_Click);
-            // 
-            // pOBRETITODataSet
-            // 
-            this.pOBRETITODataSet.DataSetName = "POBRETITODataSet";
-            this.pOBRETITODataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // incidenteBindingSource
-            // 
-            this.incidenteBindingSource.DataMember = "Incidente";
-            this.incidenteBindingSource.DataSource = this.pOBRETITODataSet;
-            // 
-            // incidenteTableAdapter
-            // 
-            this.incidenteTableAdapter.ClearBeforeFill = true;
-            // 
-            // pOBRETITODataSetBindingSource
-            // 
-            this.pOBRETITODataSetBindingSource.DataSource = this.pOBRETITODataSet;
-            this.pOBRETITODataSetBindingSource.Position = 0;
-            // 
-            // categoriaBindingSource
-            // 
-            this.categoriaBindingSource.DataMember = "Categoria";
-            this.categoriaBindingSource.DataSource = this.pOBRETITODataSet;
-            // 
-            // categoriaTableAdapter
-            // 
-            this.categoriaTableAdapter.ClearBeforeFill = true;
-            // 
-            // comboBoxIncidente
-            // 
-            this.comboBoxIncidente.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.incidenteBindingSource, "nombre", true));
-            this.comboBoxIncidente.DataSource = this.incidenteBindingSource;
-            this.comboBoxIncidente.DisplayMember = "nombre";
-            this.comboBoxIncidente.Font = new System.Drawing.Font("Bahnschrift Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBoxIncidente.FormattingEnabled = true;
-            this.comboBoxIncidente.Location = new System.Drawing.Point(245, 176);
-            this.comboBoxIncidente.Name = "comboBoxIncidente";
-            this.comboBoxIncidente.Size = new System.Drawing.Size(261, 24);
-            this.comboBoxIncidente.TabIndex = 20;
-            this.comboBoxIncidente.ValueMember = "idIncidente";
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.categoriaBindingSource, "nombre", true));
-            this.comboBox1.DataSource = this.categoriaBindingSource;
-            this.comboBox1.DisplayMember = "nombre";
-            this.comboBox1.Font = new System.Drawing.Font("Bahnschrift Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(245, 134);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(261, 24);
-            this.comboBox1.TabIndex = 21;
-            this.comboBox1.ValueMember = "idCategoria";
             // 
             // btnMinimizar
             // 
@@ -198,15 +155,6 @@
             this.btnCerrar.TabStop = false;
             this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
             // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.CalendarForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.dateTimePicker1.Font = new System.Drawing.Font("Bahnschrift Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker1.Location = new System.Drawing.Point(467, 91);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(234, 23);
-            this.dateTimePicker1.TabIndex = 24;
-            // 
             // pictureBox5
             // 
             this.pictureBox5.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox5.Image")));
@@ -227,18 +175,150 @@
             this.pictureBox1.TabIndex = 27;
             this.pictureBox1.TabStop = false;
             // 
+            // lblFechaHora
+            // 
+            this.lblFechaHora.AutoSize = true;
+            this.lblFechaHora.Font = new System.Drawing.Font("Bahnschrift Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFechaHora.Location = new System.Drawing.Point(547, 56);
+            this.lblFechaHora.Name = "lblFechaHora";
+            this.lblFechaHora.Size = new System.Drawing.Size(77, 16);
+            this.lblFechaHora.TabIndex = 29;
+            this.lblFechaHora.Text = "fecha y hora";
+            // 
+            // fechaHora
+            // 
+            this.fechaHora.Enabled = true;
+            this.fechaHora.Interval = 1000;
+            this.fechaHora.Tick += new System.EventHandler(this.fechaHora_Tick);
+            // 
+            // lblCalle
+            // 
+            this.lblCalle.AutoSize = true;
+            this.lblCalle.Font = new System.Drawing.Font("Bahnschrift Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCalle.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lblCalle.Location = new System.Drawing.Point(173, 189);
+            this.lblCalle.Name = "lblCalle";
+            this.lblCalle.Size = new System.Drawing.Size(43, 16);
+            this.lblCalle.TabIndex = 30;
+            this.lblCalle.Text = "Calle: ";
+            // 
+            // lblAltura
+            // 
+            this.lblAltura.AutoSize = true;
+            this.lblAltura.Font = new System.Drawing.Font("Bahnschrift Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAltura.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lblAltura.Location = new System.Drawing.Point(390, 190);
+            this.lblAltura.Name = "lblAltura";
+            this.lblAltura.Size = new System.Drawing.Size(49, 16);
+            this.lblAltura.TabIndex = 31;
+            this.lblAltura.Text = "Altura: ";
+            // 
+            // txtAltura
+            // 
+            this.txtAltura.Font = new System.Drawing.Font("Bahnschrift Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAltura.Location = new System.Drawing.Point(445, 186);
+            this.txtAltura.Name = "txtAltura";
+            this.txtAltura.Size = new System.Drawing.Size(69, 23);
+            this.txtAltura.TabIndex = 32;
+            this.txtAltura.TextChanged += new System.EventHandler(this.txtAltura_TextChanged_1);
+            // 
+            // cmbCategoria
+            // 
+            this.cmbCategoria.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.incidenteBindingSource, "idCategoria", true));
+            this.cmbCategoria.DataSource = this.categoriaBindingSource;
+            this.cmbCategoria.DisplayMember = "nombre";
+            this.cmbCategoria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbCategoria.FormattingEnabled = true;
+            this.cmbCategoria.Location = new System.Drawing.Point(263, 108);
+            this.cmbCategoria.Name = "cmbCategoria";
+            this.cmbCategoria.Size = new System.Drawing.Size(251, 21);
+            this.cmbCategoria.TabIndex = 33;
+            this.cmbCategoria.ValueMember = "idCategoria";
+            // 
+            // cmbIncidente
+            // 
+            this.cmbIncidente.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.incidenteBindingSource, "idCategoria", true));
+            this.cmbIncidente.DataSource = this.fKIncidenteCategoriaBindingSource;
+            this.cmbIncidente.DisplayMember = "nombre";
+            this.cmbIncidente.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbIncidente.FormattingEnabled = true;
+            this.cmbIncidente.Location = new System.Drawing.Point(263, 148);
+            this.cmbIncidente.Name = "cmbIncidente";
+            this.cmbIncidente.Size = new System.Drawing.Size(251, 21);
+            this.cmbIncidente.TabIndex = 34;
+            this.cmbIncidente.ValueMember = "idIncidente";
+            // 
+            // cmbCalle
+            // 
+            this.cmbCalle.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.callesBindingSource, "calle", true));
+            this.cmbCalle.DataSource = this.callesBindingSource;
+            this.cmbCalle.DisplayMember = "calle";
+            this.cmbCalle.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbCalle.FormattingEnabled = true;
+            this.cmbCalle.Location = new System.Drawing.Point(263, 187);
+            this.cmbCalle.Name = "cmbCalle";
+            this.cmbCalle.Size = new System.Drawing.Size(121, 21);
+            this.cmbCalle.TabIndex = 35;
+            this.cmbCalle.ValueMember = "idCalle";
+            // 
+            // pOBRETITODataSet
+            // 
+            this.pOBRETITODataSet.DataSetName = "POBRETITODataSet";
+            this.pOBRETITODataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // categoriaBindingSource
+            // 
+            this.categoriaBindingSource.DataMember = "Categoria";
+            this.categoriaBindingSource.DataSource = this.pOBRETITODataSet;
+            // 
+            // categoriaTableAdapter
+            // 
+            this.categoriaTableAdapter.ClearBeforeFill = true;
+            // 
+            // pOBRETITODataSetBindingSource
+            // 
+            this.pOBRETITODataSetBindingSource.DataSource = this.pOBRETITODataSet;
+            this.pOBRETITODataSetBindingSource.Position = 0;
+            // 
+            // incidenteBindingSource
+            // 
+            this.incidenteBindingSource.DataMember = "Incidente";
+            this.incidenteBindingSource.DataSource = this.pOBRETITODataSet;
+            // 
+            // incidenteTableAdapter
+            // 
+            this.incidenteTableAdapter.ClearBeforeFill = true;
+            // 
+            // callesBindingSource
+            // 
+            this.callesBindingSource.DataMember = "Calles";
+            this.callesBindingSource.DataSource = this.pOBRETITODataSet;
+            // 
+            // callesTableAdapter
+            // 
+            this.callesTableAdapter.ClearBeforeFill = true;
+            // 
+            // fKIncidenteCategoriaBindingSource
+            // 
+            this.fKIncidenteCategoriaBindingSource.DataMember = "FK_Incidente_Categoria";
+            this.fKIncidenteCategoriaBindingSource.DataSource = this.categoriaBindingSource;
+            // 
             // Reclamo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(730, 330);
+            this.Controls.Add(this.cmbCalle);
+            this.Controls.Add(this.cmbIncidente);
+            this.Controls.Add(this.cmbCategoria);
+            this.Controls.Add(this.txtAltura);
+            this.Controls.Add(this.lblAltura);
+            this.Controls.Add(this.lblCalle);
+            this.Controls.Add(this.lblFechaHora);
             this.Controls.Add(this.pictureBox5);
-            this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.btnMinimizar);
             this.Controls.Add(this.btnCerrar);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.comboBoxIncidente);
             this.Controls.Add(this.btnVolver);
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.lblCategoría);
@@ -250,14 +330,16 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Reclamo";
             this.Load += new System.EventHandler(this.Reclamo_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pOBRETITODataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.incidenteBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pOBRETITODataSetBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.categoriaBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pOBRETITODataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.categoriaBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pOBRETITODataSetBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.incidenteBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.callesBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fKIncidenteCategoriaBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -270,18 +352,26 @@
         private System.Windows.Forms.Label lblCategoría;
         private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.Button btnVolver;
-        private POBRETITODataSet pOBRETITODataSet;
-        private System.Windows.Forms.BindingSource incidenteBindingSource;
-        private POBRETITODataSetTableAdapters.IncidenteTableAdapter incidenteTableAdapter;
-        private System.Windows.Forms.BindingSource pOBRETITODataSetBindingSource;
-        private System.Windows.Forms.BindingSource categoriaBindingSource;
-        private POBRETITODataSetTableAdapters.CategoriaTableAdapter categoriaTableAdapter;
-        private System.Windows.Forms.ComboBox comboBoxIncidente;
-        private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.PictureBox btnMinimizar;
         private System.Windows.Forms.PictureBox btnCerrar;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.PictureBox pictureBox5;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label lblFechaHora;
+        private System.Windows.Forms.Timer fechaHora;
+        private System.Windows.Forms.Label lblCalle;
+        private System.Windows.Forms.Label lblAltura;
+        private System.Windows.Forms.TextBox txtAltura;
+        private System.Windows.Forms.ComboBox cmbCategoria;
+        private System.Windows.Forms.ComboBox cmbIncidente;
+        private System.Windows.Forms.ComboBox cmbCalle;
+        private POBRETITODataSet pOBRETITODataSet;
+        private System.Windows.Forms.BindingSource categoriaBindingSource;
+        private POBRETITODataSetTableAdapters.CategoriaTableAdapter categoriaTableAdapter;
+        private System.Windows.Forms.BindingSource pOBRETITODataSetBindingSource;
+        private System.Windows.Forms.BindingSource incidenteBindingSource;
+        private POBRETITODataSetTableAdapters.IncidenteTableAdapter incidenteTableAdapter;
+        private System.Windows.Forms.BindingSource callesBindingSource;
+        private POBRETITODataSetTableAdapters.CallesTableAdapter callesTableAdapter;
+        private System.Windows.Forms.BindingSource fKIncidenteCategoriaBindingSource;
     }
 }

@@ -20,12 +20,13 @@ namespace Dominio
 
         }
 
-        public string InsertarUsuario(string nombre, string cuil, string contraseña)
+        public string InsertarUsuario(string nombre, string cuil, string contraseña, int idRol)
         {
             Usuario usuario = new Usuario();
             usuario.Nombre = nombre;
             usuario.Cuil=cuil;
             usuario.Contraseña = contraseña;
+            usuario.IdRol = idRol;
 
             return usuarioDatos.InsertarUsuario(usuario);
 

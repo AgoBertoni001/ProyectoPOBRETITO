@@ -12,7 +12,7 @@ namespace Comun
         public string Cuil { get; set; }
         public string Nombre { get; set; }
         public string Contraseña { get; set; }
-        public int Rol { get; set; } = 1;
+        public int IdRol { get; set; } = 1;
     }
 
 }

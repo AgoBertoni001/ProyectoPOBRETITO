@@ -47,21 +47,24 @@ namespace Datos
 
         public string InsertarUsuario(Usuario obj)
         {
-            
-            var connection = GetConnection();
             string respuesta = "";
             try
             {
-                connection.Open();
 
-                SqlCommand comando = new SqlCommand("insertarUsuario", connection);
-                comando.CommandType = CommandType.StoredProcedure;
-                comando.Parameters.Add("@nombre", SqlDbType.VarChar).Value = obj.Nombre;
-                comando.Parameters.Add("@cuil", SqlDbType.Int).Value = obj.Cuil;
-                comando.Parameters.Add("@contraseña", SqlDbType.VarChar).Value = obj.Contraseña;
-                comando.Parameters.Add("@idRol", SqlDbType.VarChar).Value = obj.IdUsuario;
+                using (var connection = GetConnection())
+                {
+                    SqlCommand command = new SqlCommand("insertarUsuario",connection);
 
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.Add("@nombre", SqlDbType.VarChar).Value = obj.Nombre;
+                    command.Parameters.Add("@cuil", SqlDbType.VarChar).Value = obj.Cuil;
+                    command.Parameters.Add("@contraseña", SqlDbType.VarChar).Value = obj.Contraseña;
+                    command.Parameters.Add("@idRol", SqlDbType.Int).Value = obj.IdRol;
 
+                    connection.Open();
+                    respuesta = command.ExecuteNonQuery() == 1 ? "OK" : "No se pudo ingresar el registro";
+
+                }
                 
             }
             catch (Exception ex)

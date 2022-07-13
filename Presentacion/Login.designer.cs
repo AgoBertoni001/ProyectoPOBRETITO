@@ -176,7 +176,7 @@
             this.btnLogin.Location = new System.Drawing.Point(413, 253);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(124, 33);
-            this.btnLogin.TabIndex = 0;
+            this.btnLogin.TabIndex = 3;
             this.btnLogin.Text = "Acceder";
             this.btnLogin.UseVisualStyleBackColor = false;
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
@@ -233,7 +233,7 @@
             this.iniciarSesion.Location = new System.Drawing.Point(422, 298);
             this.iniciarSesion.Name = "iniciarSesion";
             this.iniciarSesion.Size = new System.Drawing.Size(105, 13);
-            this.iniciarSesion.TabIndex = 9;
+            this.iniciarSesion.TabIndex = 0;
             this.iniciarSesion.TabStop = true;
             this.iniciarSesion.Text = "¿No está registrado?";
             this.iniciarSesion.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.iniciarSesion_LinkClicked);

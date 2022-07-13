@@ -71,10 +71,11 @@ namespace Presentacion
             }
         }
 
-        private void btnGuardar_Enter(object sender, EventArgs e)
+        
+
+        private void btnGuardar_Click(object sender, EventArgs e)
         {
-            UsuarioDominio dominioUsuario = new UsuarioDominio();
-            dominioUsuario.InsertarUsuario(txtNombre.Text.Trim(), txtCuil.Text.Trim(), txtContraseña.Text.Trim());
+            
 
             if (txtNombre.Text != "")
             {
@@ -84,13 +85,20 @@ namespace Presentacion
                     {
                         //entonces guardo - instancio un nuevo Usuario
 
-                        /*UsuarioDominio dominioUsuario = new UsuarioDominio();
-                        dominioUsuario.InsertarUsuario(txtNombre.Text.Trim(), txtCuil.Text.Trim(), txtContraseña.Text.Trim());
-                        */
 
 
+                        UsuarioDominio dominioUsuario = new UsuarioDominio();
+                        string rta = dominioUsuario.InsertarUsuario(txtNombre.Text.Trim(), txtCuil.Text.Trim(), txtContraseña.Text.Trim(), 1);
+                        if (rta.Equals("OK"))
+                        {
+                            MessageBox.Show($"{txtNombre.Text} se registro exitosamente!", "PobreTITO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            MessageBox.Show(rta);
+                        }
 
-                        
+
                     }
                     else
                     {
@@ -100,7 +108,8 @@ namespace Presentacion
                         txtNombre.Clear();
                     }
                 }
-                else {
+                else
+                {
                     mensajeDeError("No se asignó Cuil");
                     txtContraseña.Clear();
                     txtCuil.Clear();
@@ -114,10 +123,6 @@ namespace Presentacion
                 txtCuil.Clear();
                 txtNombre.Clear();
             }
-
-
         }
-
-        
     }
 }
