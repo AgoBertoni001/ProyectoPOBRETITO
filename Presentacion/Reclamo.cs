@@ -13,6 +13,7 @@ using Comun.Cache;
 using Comun;
 using Diseño;
 
+
 namespace Presentacion
 {
     public partial class Reclamo : Form
@@ -71,10 +72,10 @@ namespace Presentacion
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             ReclamoDominio dominioReclamo = new ReclamoDominio();
-            string rta = dominioReclamo.InsertarReclamo("Pendiente", lblFecha.Text.Trim(), lblHora.Text.Trim(), cmbCategoria.TabIndex, cmbIncidente.TabIndex, cmbCalle.TabIndex);
+            string rta = dominioReclamo.InsertarReclamo("Pendiente", lblFecha.Text.Trim(), lblHora.Text.Trim(), UsuarioLoginCache.IdUsuario , cmbIncidente.TabIndex, cmbCalle.TabIndex);
             if (rta.Equals("OK"))
             {
-                MessageBox.Show($"El reclamo se registro exitosamente!-----\n{lblFecha.Text}  {lblHora.Text}   {cmbCategoria.TabIndex}      {cmbIncidente.TabIndex}      {cmbCalle.TabIndex}", "PobreTITO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show($"El reclamo se registro exitosamente!-----\n{lblFecha.Text}  {lblHora.Text}   {UsuarioLoginCache.IdUsuario}      {cmbIncidente.TabIndex}      {cmbCalle.TabIndex}", "PobreTITO", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
