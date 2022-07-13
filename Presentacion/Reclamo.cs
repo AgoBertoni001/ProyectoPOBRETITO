@@ -7,6 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Runtime.InteropServices;
+using Dominio;
+using Comun.Cache;
+using Comun;
+using Diseño;
 
 namespace Presentacion
 {
@@ -46,9 +51,10 @@ namespace Presentacion
 
         
 
-        private void fechaHora_Tick(object sender, EventArgs e)
+        private void fecha_Tick(object sender, EventArgs e)
         {
-            lblFechaHora.Text = DateTime.Now.ToString();
+            lblFecha.Text = DateTime.Now.ToShortDateString();
+            lblHora.Text=DateTime.Now.ToLongTimeString();
         }
 
         private void Reclamo_Load(object sender, EventArgs e)
@@ -64,7 +70,17 @@ namespace Presentacion
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Intento de guardado", "PobreTITO");
+            ReclamoDominio dominioReclamo = new ReclamoDominio();
+            string rta = dominioReclamo.InsertarReclamo("Pendiente", lblFecha.Text.Trim(), lblHora.Text.Trim(), cmbCategoria.TabIndex, cmbIncidente.TabIndex, cmbCalle.TabIndex);
+            if (rta.Equals("OK"))
+            {
+                MessageBox.Show($"El reclamo se registro exitosamente!-----\n{lblFecha.Text}  {lblHora.Text}   {cmbCategoria.TabIndex}      {cmbIncidente.TabIndex}      {cmbCalle.TabIndex}", "PobreTITO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show(rta);
+            }
+
         }
 
         private void txtAltura_TextChanged_1(object sender, EventArgs e)

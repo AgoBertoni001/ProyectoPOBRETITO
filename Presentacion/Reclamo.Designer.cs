@@ -39,33 +39,34 @@
             this.btnCerrar = new System.Windows.Forms.PictureBox();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.lblFechaHora = new System.Windows.Forms.Label();
+            this.lblFecha = new System.Windows.Forms.Label();
             this.fechaHora = new System.Windows.Forms.Timer(this.components);
             this.lblCalle = new System.Windows.Forms.Label();
             this.lblAltura = new System.Windows.Forms.Label();
             this.txtAltura = new System.Windows.Forms.TextBox();
             this.cmbCategoria = new System.Windows.Forms.ComboBox();
-            this.cmbIncidente = new System.Windows.Forms.ComboBox();
-            this.cmbCalle = new System.Windows.Forms.ComboBox();
+            this.incidenteBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.pOBRETITODataSet = new Presentacion.POBRETITODataSet();
             this.categoriaBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.cmbIncidente = new System.Windows.Forms.ComboBox();
+            this.fKIncidenteCategoriaBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.cmbCalle = new System.Windows.Forms.ComboBox();
+            this.callesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.categoriaTableAdapter = new Presentacion.POBRETITODataSetTableAdapters.CategoriaTableAdapter();
             this.pOBRETITODataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.incidenteBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.incidenteTableAdapter = new Presentacion.POBRETITODataSetTableAdapters.IncidenteTableAdapter();
-            this.callesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.callesTableAdapter = new Presentacion.POBRETITODataSetTableAdapters.CallesTableAdapter();
-            this.fKIncidenteCategoriaBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.lblHora = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.incidenteBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pOBRETITODataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.categoriaBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pOBRETITODataSetBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.incidenteBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.callesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fKIncidenteCategoriaBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.callesBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pOBRETITODataSetBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // lblIniciarReclamo
@@ -175,21 +176,22 @@
             this.pictureBox1.TabIndex = 27;
             this.pictureBox1.TabStop = false;
             // 
-            // lblFechaHora
+            // lblFecha
             // 
-            this.lblFechaHora.AutoSize = true;
-            this.lblFechaHora.Font = new System.Drawing.Font("Bahnschrift Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFechaHora.Location = new System.Drawing.Point(547, 56);
-            this.lblFechaHora.Name = "lblFechaHora";
-            this.lblFechaHora.Size = new System.Drawing.Size(77, 16);
-            this.lblFechaHora.TabIndex = 29;
-            this.lblFechaHora.Text = "fecha y hora";
+            this.lblFecha.AutoSize = true;
+            this.lblFecha.BackColor = System.Drawing.Color.White;
+            this.lblFecha.Font = new System.Drawing.Font("Bahnschrift Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFecha.Location = new System.Drawing.Point(547, 56);
+            this.lblFecha.Name = "lblFecha";
+            this.lblFecha.Size = new System.Drawing.Size(41, 16);
+            this.lblFecha.TabIndex = 29;
+            this.lblFecha.Text = "fecha ";
             // 
             // fechaHora
             // 
             this.fechaHora.Enabled = true;
             this.fechaHora.Interval = 1000;
-            this.fechaHora.Tick += new System.EventHandler(this.fechaHora_Tick);
+            this.fechaHora.Tick += new System.EventHandler(this.fecha_Tick);
             // 
             // lblCalle
             // 
@@ -235,6 +237,21 @@
             this.cmbCategoria.TabIndex = 33;
             this.cmbCategoria.ValueMember = "idCategoria";
             // 
+            // incidenteBindingSource
+            // 
+            this.incidenteBindingSource.DataMember = "Incidente";
+            this.incidenteBindingSource.DataSource = this.pOBRETITODataSet;
+            // 
+            // pOBRETITODataSet
+            // 
+            this.pOBRETITODataSet.DataSetName = "POBRETITODataSet";
+            this.pOBRETITODataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // categoriaBindingSource
+            // 
+            this.categoriaBindingSource.DataMember = "Categoria";
+            this.categoriaBindingSource.DataSource = this.pOBRETITODataSet;
+            // 
             // cmbIncidente
             // 
             this.cmbIncidente.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.incidenteBindingSource, "idCategoria", true));
@@ -247,6 +264,11 @@
             this.cmbIncidente.Size = new System.Drawing.Size(251, 21);
             this.cmbIncidente.TabIndex = 34;
             this.cmbIncidente.ValueMember = "idIncidente";
+            // 
+            // fKIncidenteCategoriaBindingSource
+            // 
+            this.fKIncidenteCategoriaBindingSource.DataMember = "FK_Incidente_Categoria";
+            this.fKIncidenteCategoriaBindingSource.DataSource = this.categoriaBindingSource;
             // 
             // cmbCalle
             // 
@@ -261,15 +283,10 @@
             this.cmbCalle.TabIndex = 35;
             this.cmbCalle.ValueMember = "idCalle";
             // 
-            // pOBRETITODataSet
+            // callesBindingSource
             // 
-            this.pOBRETITODataSet.DataSetName = "POBRETITODataSet";
-            this.pOBRETITODataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // categoriaBindingSource
-            // 
-            this.categoriaBindingSource.DataMember = "Categoria";
-            this.categoriaBindingSource.DataSource = this.pOBRETITODataSet;
+            this.callesBindingSource.DataMember = "Calles";
+            this.callesBindingSource.DataSource = this.pOBRETITODataSet;
             // 
             // categoriaTableAdapter
             // 
@@ -280,28 +297,24 @@
             this.pOBRETITODataSetBindingSource.DataSource = this.pOBRETITODataSet;
             this.pOBRETITODataSetBindingSource.Position = 0;
             // 
-            // incidenteBindingSource
-            // 
-            this.incidenteBindingSource.DataMember = "Incidente";
-            this.incidenteBindingSource.DataSource = this.pOBRETITODataSet;
-            // 
             // incidenteTableAdapter
             // 
             this.incidenteTableAdapter.ClearBeforeFill = true;
-            // 
-            // callesBindingSource
-            // 
-            this.callesBindingSource.DataMember = "Calles";
-            this.callesBindingSource.DataSource = this.pOBRETITODataSet;
             // 
             // callesTableAdapter
             // 
             this.callesTableAdapter.ClearBeforeFill = true;
             // 
-            // fKIncidenteCategoriaBindingSource
+            // lblHora
             // 
-            this.fKIncidenteCategoriaBindingSource.DataMember = "FK_Incidente_Categoria";
-            this.fKIncidenteCategoriaBindingSource.DataSource = this.categoriaBindingSource;
+            this.lblHora.AutoSize = true;
+            this.lblHora.BackColor = System.Drawing.Color.White;
+            this.lblHora.Font = new System.Drawing.Font("Bahnschrift Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHora.Location = new System.Drawing.Point(649, 56);
+            this.lblHora.Name = "lblHora";
+            this.lblHora.Size = new System.Drawing.Size(34, 16);
+            this.lblHora.TabIndex = 36;
+            this.lblHora.Text = "hora";
             // 
             // Reclamo
             // 
@@ -309,13 +322,14 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(730, 330);
+            this.Controls.Add(this.lblHora);
             this.Controls.Add(this.cmbCalle);
             this.Controls.Add(this.cmbIncidente);
             this.Controls.Add(this.cmbCategoria);
             this.Controls.Add(this.txtAltura);
             this.Controls.Add(this.lblAltura);
             this.Controls.Add(this.lblCalle);
-            this.Controls.Add(this.lblFechaHora);
+            this.Controls.Add(this.lblFecha);
             this.Controls.Add(this.pictureBox5);
             this.Controls.Add(this.btnMinimizar);
             this.Controls.Add(this.btnCerrar);
@@ -334,12 +348,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.incidenteBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pOBRETITODataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.categoriaBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pOBRETITODataSetBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.incidenteBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.callesBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fKIncidenteCategoriaBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.callesBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pOBRETITODataSetBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -356,7 +370,7 @@
         private System.Windows.Forms.PictureBox btnCerrar;
         private System.Windows.Forms.PictureBox pictureBox5;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label lblFechaHora;
+        private System.Windows.Forms.Label lblFecha;
         private System.Windows.Forms.Timer fechaHora;
         private System.Windows.Forms.Label lblCalle;
         private System.Windows.Forms.Label lblAltura;
@@ -373,5 +387,6 @@
         private System.Windows.Forms.BindingSource callesBindingSource;
         private POBRETITODataSetTableAdapters.CallesTableAdapter callesTableAdapter;
         private System.Windows.Forms.BindingSource fKIncidenteCategoriaBindingSource;
+        private System.Windows.Forms.Label lblHora;
     }
 }

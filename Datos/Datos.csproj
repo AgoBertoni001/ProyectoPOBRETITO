@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="ConnectionToSql.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReclamoDatos.cs" />
     <Compile Include="UsuarioDatos.cs" />
   </ItemGroup>
   <ItemGroup>
