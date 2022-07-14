@@ -8,16 +8,16 @@
 - La solución debe registrar incidentes por parte del usuario.
 
 ### Diagrama de Casos de Usos:
-![image](https://o365sanfranciscoutneduar-my.sharepoint.com/personal/abertoni_facultad_sanfrancisco_utn_edu_ar/Documents/1.FACULTAD/2022/7.Dise%c3%b1o%20de%20sistemas/PobreTITO/imagenesDocumentacion/diagrama_CU.png?Web=1)
+[![diagrama-CU.png](https://i.postimg.cc/W4SL53tW/diagrama-CU.png)](https://postimg.cc/CZZQ1wGk)
+
 ### Diagrama de Clase:
-![image](https://o365sanfranciscoutneduar-my.sharepoint.com/personal/abertoni_facultad_sanfrancisco_utn_edu_ar/Documents/1.FACULTAD/2022/7.Dise%c3%b1o%20de%20sistemas/PobreTITO/imagenesDocumentacion/diagrama_CLASE.png?Web=1)
+[![diagrama-CLASE.png](https://i.postimg.cc/fLpwvLr4/diagrama-CLASE.png)](https://postimg.cc/WFmLN2VS)
 
 ### Diagrama DER:
-![image](https://o365sanfranciscoutneduar-my.sharepoint.com/personal/abertoni_facultad_sanfrancisco_utn_edu_ar/Documents/1.FACULTAD/2022/7.Dise%c3%b1o%20de%20sistemas/PobreTITO/imagenesDocumentacion/diagrama_DER.png?Web=1)
+[![diagrama-DER.png](https://i.postimg.cc/QCG2tWzM/diagrama-DER.png)](https://postimg.cc/wy2f43gK)
 
 ### Descripciones de Casos de Uso:
-![image](https://o365sanfranciscoutneduar-my.sharepoint.com/personal/abertoni_facultad_sanfrancisco_utn_edu_ar/Documents/1.FACULTAD/2022/7.Dise%c3%b1o%20de%20sistemas/PobreTITO/imagenesDocumentacion/descripcion_CU_1.png?Web=1)
+[![descripcion-CU-1.png](https://i.postimg.cc/nrp3gK5q/descripcion-CU-1.png)](https://postimg.cc/VrZ9btzN)
 
-![image](https://o365sanfranciscoutneduar-my.sharepoint.com/personal/abertoni_facultad_sanfrancisco_utn_edu_ar/Documents/1.FACULTAD/2022/7.Dise%c3%b1o%20de%20sistemas/PobreTITO/imagenesDocumentacion/descripcion_CU_3.png?Web=1)
-
+[![descripcion-CU-3.png](https://i.postimg.cc/656Hh0CX/descripcion-CU-3.png)](https://postimg.cc/V5TBfX7G)
 
